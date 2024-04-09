@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>이미지바꾸기</title>
+    <style>
+        p {display: flex;}
+        .large {margin: 0; padding: 0; width:600px; height:400px}
+        .small {margin: 0; padding: 0; width:150px; height:100px}
+    </style>
+
+</head>
+<body>
+    <h1>이미지 뷰어</h1>
+    <p><img src="images/pic_1.jpg" id ="cup_img_large" class="large"></p>
+    <p class="list">
+       <img src="images/pic_1.jpg" id ="cup_img" class="small">
+       <img src="images/pic_2.jpg" id ="cup_img" class="small">
+       <img src="images/pic_3.jpg" id ="cup_img" class="small">
+       <img src="images/pic_4.jpg" id ="cup_img" class="small">
+    </p>
+    <script>       
+        let elem = document.querySelector("#cup_img_large");
+        let p = document.querySelector(".list");
+        p.onclick = function(e){
+            img = e.target;
+            elem.setAttribute("src", img.getAttribute("src"));
+        }
+
+    </script>
+</body>
+</html>

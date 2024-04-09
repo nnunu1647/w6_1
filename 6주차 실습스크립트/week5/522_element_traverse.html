@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red  { color: red; }
+        .blue { color: blue; }
+        .green  { color: green; }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Cities</h1>
+        <ul>
+          <li id="one" class="red">Seoul</li>
+          <li id="two" class="red">London</li>
+          <li id="three" class="red">Newyork</li>
+          <li id="four">Tokyo</li>
+        </ul>
+      </div>
+      <button onclick="parent()">find #two</button>
+      <button onclick="firstLastChild()">FirstLastChild</button>
+      <button onclick="child()">Children</button>
+      <button onclick="siblings()">siblings</button>
+      <script>
+        function parent()
+        {
+            let elem = document.getElementById('two');
+            elem.parentNode.className = "blue";
+        }
+
+        function firstLastChild()
+        {
+            let elem = document.getElementsByTagName('ul');
+            console.log(elem);
+            let first = elem[0].firstElementChild;
+            first.className = 'green';
+
+            elem = document.querySelector('ul');
+            console.log(elem);
+            //let last = elem.lastChild;      //textnode '\n     '
+            let last = elem.lastElementChild;   //HTMLLiElement
+            console.log(last);
+            last.className = 'green';     
+       
+        }
+
+        function child()
+        {
+            let elem = document.querySelector('ul');  //HTMLULListElement
+            console.log(elem);
+            console.log(elem.childNodes);  //NodeList (9)
+            console.log(elem.children);    //HTMLCollection(4)
+            [...elem.children].forEach(el => console.log(el.nodeType));
+        }
+
+        function siblings()
+        {
+            let elem = document.querySelector('ul'); //HTMLULListElement
+            let firstChild = elem.firstElementChild;
+
+            firstChild.nextElementSibling.className = 'blue';
+            firstChild.nextElementSibling.previousElementSibling.className = 'blue';
+        }
+
+      </script>
+</body>
+</html>

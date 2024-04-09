@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red  { color: red; }
+        .blue { color: blue; }
+        .green  { color: green; }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Cities</h1>
+        <ul>
+          <li id="one" class="red">Seoul</li>
+          <li id="two" class="red">London</li>
+          <li id="three" class="red">Newyork</li>
+          <li id="four">Tokyo</li>
+        </ul>
+      </div>
+      <button onclick="changeById()">Id</button>
+      <button onclick="changeByTagName()">TagName</button>
+      <button onclick="changeByClassNameNL()">ClassName</button>
+      <button onclick="changeByQuerySelector()">QuerySelector</button>
+      <script>
+        function changeById()
+        {
+            let elem = document.getElementById('two');
+            elem.className = "blue";
+        }
+
+        function changeByTagName()
+        {
+            let elems = document.getElementsByTagName('li');
+            console.log(elems);
+            for (let x = 0 ; x < elems.length; x++)
+                elems[x].className = "blue";
+        }
+
+        function changeByClassName()
+        {
+            let elems = document.getElementsByClassName('red');  //HTMLCollection(Live)
+            console.log(elems);
+            for (let x = 0 ; x < elems.length; x++)
+                
+                elems[x].className = "blue";
+        }
+
+        function changeByClassNameNL()
+        {
+            let elems = document.getElementsByClassName('red');  //HTMLCollection(Live)
+            elems = [...elems];     //Array
+            console.log(elems);
+            for (let x = 0 ; x < elems.length; x++)
+                
+                elems[x].className = "blue";
+        }
+        function changeByQuerySelector()
+        {
+            let elems = document.querySelectorAll('.red');  //NodeList(not-Live)
+
+            //for (let x = 0 ; x < elems.length; x++)  
+            //    elems[x].className = "blue";
+
+            [...elems].forEach(elem => elem.className = 'blue');
+
+        }
+      </script>
+</body>
+</html>

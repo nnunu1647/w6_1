@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>이미지바꾸기</title>
+    <style>
+        p {display: flex;}
+        .large {margin: 0; padding: 0; width:600px; height:400px}
+        .small {margin: 0; padding: 0; width:150px; height:100px}
+    </style>
+    
+</head>
+<body>
+    <h1><span   onmousedown="mouse_down(this)" 
+        onmouseup="mouse_up(this)"
+        onmouseover="mouse_over(this)"
+        onmouseout="mouse_out(this)"
+        onmousewheel="mouse_wheel(event, this)"
+        style="display: inline-block">이미지 뷰어
+    </span> </h1>
+
+    <p><img src="images/pic_1.jpg" id ="cup_img_large" class="large" onmousemove="mouse_position(event)"></p>
+    <p>
+       <img src="images/pic_1.jpg" id ="cup_img" class="small" onclick="changeImage(this)">
+       <img src="images/pic_2.jpg" id ="cup_img" class="small" onclick="changeImage(this)">
+       <img src="images/pic_3.jpg" id ="cup_img" class="small" onclick="changeImage(this)">
+       <img src="images/pic_4.jpg" id ="cup_img" class="small" onclick="changeImage(this)">
+    </p>
+    <br>
+    <div id="disp_panel"></div>
+
+    <script>       
+        let elem = document.querySelector("#cup_img_large");
+        function changeImage(img){
+            elem.setAttribute("src", img.getAttribute("src"));
+        }
+
+        // 기타 마우스 이벤트
+        let width = 1; 
+        document.oncontextmenu = hideContextMenu;
+
+        function mouse_down(obj)
+        {
+            obj.style.fontStyle = 'italic';
+        }
+        function mouse_up(obj)
+        {
+            obj.style.fontStyle = 'normal';
+        }
+        function mouse_over(obj)
+        {
+            obj.style.borderColor = 'violet';
+        }
+        function mouse_out(obj)
+        {
+            obj.style.borderColor = 'lightgray';
+        }
+        function mouse_wheel(e, obj)
+        {
+            if (e.wheelDelta < 0){
+                if (width > 0) width--;
+            }else
+                width++;
+            
+            
+            obj.style.borderStyle = "ridge";
+            obj.style.borderWidth = width +"px";
+        }
+
+        // 마우스 포지션 출력
+        function mouse_position(e){
+
+            let div = document.getElementById("disp_panel");
+            let text = "눌린단추:" + e.button + "<br>";
+            text += "screenX, screenY = " + e.screenX +"," + e.screenY + "<br>";
+            text += "clientX, clientY = " + e.clientX +"," + e.clientY + "<br>";
+            text += "offsetX, offsetY = " + e.offsetX +"," + e.offsetY + "<br>";
+            text += "x, y = " + e.x +"," + e.y + "<br>";
+            div.innerHTML = text;
+        }
+
+        //콘텍스트 메뉴
+        function hideContextMenu(){
+            alert("마우스 우측 단추를 사용할 수 없습니다.");
+            return false;
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red  { color: red; }
+        .blue { color: blue; }
+        .green  { color: green; }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Cities</h1>
+        <ul>
+          <li id="one" class="red">Seoul</li>
+          <li id="two" class="red">London</li>
+          <li id="three" class="red">Newyork</li>
+          <li id="four">Tokyo</li>
+        </ul>
+      </div>
+      <button onclick="textNode()">textNode</button>
+      <button onclick="firstLastChild()">FirstLastChild</button>
+      <button onclick="child()">Children</button>
+      <button onclick="siblings()">siblings</button>
+      <script>
+        function textNode()
+        {
+            let elem = document.getElementById('two');
+            console.log(elem.nodeName);
+            console.log(elem.nodeType);
+            let txtNode = elem.firstChild;
+            console.log(txtNode.nodeName);
+            console.log(txtNode.nodeType);
+            console.log(txtNode.nodeValue);
+            txtNode.nodeValue = 'Paris';
+        }
+      </script>
+</body>
+</html>

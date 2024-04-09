@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red  { color: red; }
+        .blue { color: blue; }
+        .green  { color: green; }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Cities</h1>
+        <ul>
+          <li id="one" class="red">Seoul</li>
+          <li id="two" class="red">London</li>
+          <li id="three" class="red">Newyork</li>
+          <li id="four">Tokyo</li>
+        </ul>
+      </div>
+      <button onclick="append_Child()">appendChild</button>
+      <button onclick="remove_Child()">removeChild</button>
+      <button onclick="insert_Adjacent()">insertAdjacentHTML</button>
+
+      <script>
+        function append_Child()
+        {
+            let elem = document.querySelector('ul');
+            const newElem = document.createElement('li');
+            const newText = document.createTextNode('Beijing');
+            newElem.appendChild(newText);
+
+            elem.appendChild(newElem);
+        }
+        
+        function remove_Child()
+        {
+            let elem = document.querySelector('ul');
+            let rmElem = document.querySelector('li#two');
+            elem.removeChild(rmElem);
+        }
+
+        function insert_Adjacent()
+        {
+            let elem = document.querySelector('li#two');
+            elem.insertAdjacentHTML('beforeend', '<em class="blue">, England</em>');
+        }
+
+      </script>
+</body>
+</html>

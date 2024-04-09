@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <button onclick="foo()">Button1</button>
+  <button class="btn2">Button2</button>
+  <button class="btn3">Button3</button>
+  <script>
+    const btn2 = document.querySelector(".btn2");
+    const btn3 = document.querySelector(".btn3");
+
+    btn2.onclick = foo;
+    btn3.addEventListener('click',foo);
+
+    function foo () {
+      console.log(this); // window
+    }
+  </script>
+</body>
+</html>

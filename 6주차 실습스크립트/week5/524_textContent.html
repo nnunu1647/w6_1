@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red  { color: red; }
+        .blue { color: blue; }
+        .green  { color: green; }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Cities</h1>
+        <ul>
+          <li id="one" class="red">Seoul</li>
+          <li id="two" class="red">London</li>
+          <li id="three" class="red">Newyork</li>
+          <li id="four">Tokyo</li>
+        </ul>
+      </div>
+      <button onclick="text_Content()">textContent</button>
+      <button onclick="inner_Text()">innerText</button>
+      <button onclick="inner_HTML()">innerHTML</button>
+      <button onclick="inner_HTML_Tag()">innerHTMLwithTag</button>
+      <script>
+        function text_Content()
+        {
+            let elem = document.querySelector('ul');
+            console.log(elem.textContent);
+            console.log(elem.firstElementChild.nextElementSibling.textContent);
+            elem.firstElementChild.nextElementSibling.textContent += ', Pusan';
+            elem.lastElementChild.textContent ='<h1>Beijing</h1>';
+        }
+        
+        function inner_Text()
+        {
+            let elem = document.querySelector('ul');
+            console.log(elem.innerText);
+            console.log(elem.firstElementChild.nextElementSibling.innerText);
+            elem.firstElementChild.nextElementSibling.innerText += ', Pusan';
+            elem.lastElementChild.innerText ='<h1>Beijing</h1>';
+        }
+
+        function inner_HTML()
+        {
+            let elem = document.querySelector('ul');
+            console.log(elem.innerHTML);
+            console.log(elem.firstElementChild.nextElementSibling.innerHTML);
+            elem.firstElementChild.nextElementSibling.innerHTML += ', Pusan';
+            elem.lastElementChild.innerHTML ='<h1>Beijing</h1>';
+        }
+
+        function inner_HTML_Tag()
+        {
+            let elem = document.querySelector('#two');
+            elem.innerHTML = 'Beijing';
+            elem.innerHTML +='<img src="beijing.jpg" onerror="alert(\'No image!!\')">';
+        }
+      </script>
+</body>
+</html>

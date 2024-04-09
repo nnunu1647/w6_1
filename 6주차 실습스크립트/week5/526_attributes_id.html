@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red  { color: red; }
+        .blue { color: blue; }
+        .green  { color: green; }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Cities</h1>
+        <ul>
+          <li id="one" class="red">Seoul</li>
+          <li id="two" class="red">London</li>
+          <li id="three" class="red">Newyork</li>
+          <li id="four">Tokyo</li>
+        </ul>
+      </div>
+      <button onclick="makeBlueAll()">makeBlueAll</button>
+      <button onclick="makeGreenAll()">makeGreenAll</button>
+      <button onclick="set_id()">setId</button>
+      <button onclick="inner_HTML_Tag()">innerHTMLwithTag</button>
+      <script>
+
+        function makeBlueAll()
+        {
+            let elems = document.querySelectorAll('li');
+            [...elems].forEach(el => {if (el.className !== 'blue') el.className = 'blue'});
+        }
+        
+        function makeGreenAll()
+        {
+            let elems = document.querySelectorAll('li');
+            [...elems].forEach(el => {if (el.classList.contains('blue')) el.className = 'green'});
+        }
+
+        function set_id()
+        {
+            let elem = document.querySelector('h1');
+            console.dir(elem); // HTMLHeadingElement: h1
+            console.log(elem.firstChild.nodeValue); //Cities
+
+            elem.id = 'heading';
+            console.log(elem.id)
+        }
+      </script>
+</body>
+</html>
